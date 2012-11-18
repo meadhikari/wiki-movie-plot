@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Life is too short for Movies read the plot.</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      /* Override some defaults */
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+        width: 300px;
+      }
+
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+	  .login-form {
+		margin-left: 65px;
+	  }
+	
+	  legend {
+		margin-right: -50px;
+		font-weight: bold;
+	  	color: #404040;
+	  }
+
+    </style>
+
+</head>
+<body>
+	<div class="container">
+		{%if error == 1 %}  
+		<div class="alert alert-error">
+		
+		<strong>Error!</strong> There was a error. It works most of the time but this was not the case. Trying to fix it.
+		</div>
+		{% endif%}
+		<p class="muted">Life is too short for wasting more than an hour in a movie which may not be even worth it in the end. But for those useless conversation just to seem social just read the plot(or download mp3).</p>
+
+		<div class="content">
+			<div class="row">
+				
+				<div class="login-form">
+					<h2>Movie Title</h2>
+					<form method="post"action="">
+						<fieldset>
+							<div class="clearfix">
+								<input type="text" name="movie_name" placeholder="eg. 'Inception'">
+							</div>
+							<button class="btn primary" type="submit">Get Story</button>
+							
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		
+		</div>
+		
+		
+<div class="well well-small">
+  <p class="text-info">N.B. Current error rate is very high. Don't use for emergency situations.</p>
+       </div>
+	</div> <!-- /container -->
+	
+</body>
+</html>
