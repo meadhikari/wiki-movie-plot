@@ -45,7 +45,7 @@ class MainHandler(Handler):
 			story = plaintext2html(plot(corrected_movie_name))
     
 			if story:
-				self.response.out.write("<img src= "+ poster_url+"><a href='http://tts-api.com/tts.mp3?q="+story.replace(" ","+").replace("<br>","")+"'>Who reads, give me mp3</a><br/>"+plaintext2html(plot(corrected_movie_name)))
+				self.response.out.write("<img src= "+ poster_url+"><a href='http://tts-api.com/tts.mp3?q="+story.replace(" ","%20").replace("<br>","")+"'>Who reads, give me mp3</a><br/>"+plaintext2html(plot(corrected_movie_name)))
 			else:
 				self.render("index.html",error=1)
 		except:
