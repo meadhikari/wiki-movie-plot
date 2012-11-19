@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Life is too short for Movies read the plot.</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      /* Override some defaults */
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+        width: 600px;
+      }
+
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+	  .login-form {
+		margin-left: 65px;
+	  }
+	
+	  legend {
+		margin-right: -50px;
+		font-weight: bold;
+	  	color: #404040;
+	  }
+
+    </style>
+
+</head>
+<body>
+	<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <ul class="nav nav-list">
+		<li class="nav-header">{{title |safe}}</li>
+			<li class="active"><img src= {{imgsrc}}></li>
+			<li><a href="#">Released : {{released}}</a></li>
+			<li><a href="#">IMDB Rating : {{rating}}</a></li>
+			<li><a href="#">Director : {{director}}</a></li>
+			<li></li>
+			<li class="active"><a href="{{mp3link}}">Download as MP3</a></li>
+  
+			</ul>
+    </div>
+    <div class="span10">
+	<p>	
+	{{story | safe}}	
+	</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

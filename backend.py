@@ -14,16 +14,14 @@ engine = Wikipedia(language="en")
 # Contrary to other search engines in the module,
 # Wikipedia simply returns one WikipediaArticle object (or None) instead of a list of results.
 date = 0
-def poster_of_the_movie(name):
-        omdbapi_json_url = "http://www.omdbapi.com/?i=&t="+name.replace(" ","+")    
-        logging.error(omdbapi_json_url)
+def more_movie_info(name):
+        omdbapi_json_url = "http://www.omdbapi.com/?i=&t="+name.lower().replace(" ","+")    
         json_content = urllib2.urlopen(omdbapi_json_url)
         json_decoded = json.load(json_content)
         try:
-            poster_url = json_decoded["Poster"]
-            return poster_url
+            return {"Director":json_decoded["Director"],"Poster":json_decoded["Poster"],"Released":json_decoded["Released"],"imdbRating":json_decoded["imdbRating"]}
         except:
-            return "#"
+            return {"Director":"N/A","Poster":"N/A","Released":"N/A","imdbRating":"N/A"}
 def title_from_imdb(user_input):
 	imdb_json_url = "http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q="+user_input.replace(" ","+")
 	json_content = urllib2.urlopen(imdb_json_url)
