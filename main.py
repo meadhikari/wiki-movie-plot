@@ -19,7 +19,7 @@ import webapp2
 import logging
 import jinja2
 from convert2html import plaintext2html
-from backend import plot,title_from_imdb
+from backend import plot,title_from_imdb,poster_of_the_movie
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader("template"), autoescape = True)
 import os, sys; sys.path.insert(0, os.path.join("..", ".."))
 engine = Wikipedia(language="en")
@@ -39,12 +39,13 @@ class MainHandler(Handler):
     def post(self):
 		movie_name = self.request.get('movie_name')
 		corrected_movie_name = title_from_imdb(movie_name) 
+                poster_url = poster_of_the_movie(corrected_movie_name)
 		logging.error(corrected_movie_name)
 		try:
 			story = plaintext2html(plot(corrected_movie_name))
     
 			if story:
-				self.response.out.write("<a href='http://tts-api.com/tts.mp3?q="+story.replace(" ","+").replace("<br>","")+"'>Who reads, give me mp3</a><br/>"+plaintext2html(plot(corrected_movie_name)))
+				self.response.out.write("<img src= "+ poster_url+"><a href='http://tts-api.com/tts.mp3?q="+story.replace(" ","+").replace("<br>","")+"'>Who reads, give me mp3</a><br/>"+plaintext2html(plot(corrected_movie_name)))
 			else:
 				self.render("index.html",error=1)
 		except:

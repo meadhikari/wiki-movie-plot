@@ -2,6 +2,7 @@ import os, sys; sys.path.insert(0, os.path.join("..", ".."))
 
 from pattern.web import Wikipedia
 import json
+import logging
 import urllib2
 # This example retrieves an article from Wikipedia (http://en.wikipedia.org).
 # A query requests the article's HTML source from the server, which can be quite slow.
@@ -12,7 +13,17 @@ engine = Wikipedia(language="en")
 
 # Contrary to other search engines in the module,
 # Wikipedia simply returns one WikipediaArticle object (or None) instead of a list of results.
-
+date = 0
+def poster_of_the_movie(name):
+        omdbapi_json_url = "http://www.omdbapi.com/?i=&t="+name.replace(" ","+")    
+        logging.error(omdbapi_json_url)
+        json_content = urllib2.urlopen(omdbapi_json_url)
+        json_decoded = json.load(json_content)
+        try:
+            poster_url = json_decoded["Poster"]
+            return poster_url
+        except:
+            return "#"
 def title_from_imdb(user_input):
 	imdb_json_url = "http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q="+user_input.replace(" ","+")
 	json_content = urllib2.urlopen(imdb_json_url)
@@ -20,6 +31,7 @@ def title_from_imdb(user_input):
 	
 	try: 
 	    output = json_decoded["title_popular"][0]["title"]
+            
 	except:
 		try:	
 			output = json_decoded["title_exact"][0]["title"]
