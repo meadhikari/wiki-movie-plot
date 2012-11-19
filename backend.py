@@ -22,7 +22,7 @@ def title_from_imdb(user_input):
 	    output = json_decoded["title_popular"][0]["title"]
 	except:
 		try:	
-			output = json_decoded["title_approx"][0]["title"]
+			output = json_decoded["title_exact"][0]["title"]
 		except:
 			try:
 				output = json_decoded["title_approx"][0]["title"]
