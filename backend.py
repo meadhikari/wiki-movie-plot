@@ -50,4 +50,3 @@ def plot(input):
                 return s.content
     except:
         return ""
-
